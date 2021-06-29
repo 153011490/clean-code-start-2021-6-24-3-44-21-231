@@ -17,7 +17,8 @@ public class OrderReceipt {
     public String printReceipt() {
         StringBuilder receipt = new StringBuilder();
 
-        printHeader(receipt, "======Printing Orders======\n");
+        String orderHeader = "======Printing Orders======\n";
+        printHeader(receipt, orderHeader);
 
         printCustomerInformation(receipt);
 
@@ -33,9 +34,11 @@ public class OrderReceipt {
             totalAmount += calculateTotalAmount(lineItem, salesTax);
         }
 
-        printStateTax(receipt, totalSalesTax, "Sales Tax");
+        String salesTax = "Sales Tax";
+        printStateTax(receipt, totalSalesTax, salesTax);
 
-        printTotalAmount(receipt, totalAmount, "Total Amount");
+        String totalAmountStr = "Total Amount";
+        printTotalAmount(receipt, totalAmount, totalAmountStr);
         return receipt.toString();
     }
 
