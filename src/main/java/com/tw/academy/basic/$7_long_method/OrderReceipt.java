@@ -23,27 +23,15 @@ public class OrderReceipt {
     public String printReceipt() {
         StringBuilder receipt = new StringBuilder();
 
-        // print headers
-        receipt.append("======Printing Orders======\n");
+        printHeader(receipt, "======Printing Orders======\n");
 
-        // print date, bill no, customer name
-//        receipt.append("Date - " + order.getDate();
-        receipt.append(order.getCustomerName());
-        receipt.append(order.getCustomerAddress());
-//        receipt.append(order.getCustomerLoyaltyNumber());
+        printCustomerInformation(receipt);
 
         // prints lineItems
         double totSalesTx = 0d;
         double tot = 0d;
         for (LineItem lineItem : order.getLineItems()) {
-            receipt.append(lineItem.getDescription());
-            receipt.append('\t');
-            receipt.append(lineItem.getPrice());
-            receipt.append('\t');
-            receipt.append(lineItem.getQuantity());
-            receipt.append('\t');
-            receipt.append(lineItem.totalAmount());
-            receipt.append('\n');
+            printItems(receipt, lineItem);
 
             // calculate sales tax @ rate of 10%
             double salesTax = lineItem.totalAmount() * .10;
@@ -59,5 +47,25 @@ public class OrderReceipt {
         // print total amount
         receipt.append("Total Amount").append('\t').append(tot);
         return receipt.toString();
+    }
+
+    private void printItems(StringBuilder receipt, LineItem lineItem) {
+        receipt.append(lineItem.getDescription());
+        receipt.append('\t');
+        receipt.append(lineItem.getPrice());
+        receipt.append('\t');
+        receipt.append(lineItem.getQuantity());
+        receipt.append('\t');
+        receipt.append(lineItem.totalAmount());
+        receipt.append('\n');
+    }
+
+    private void printCustomerInformation(StringBuilder receipt) {
+        receipt.append(order.getCustomerName());
+        receipt.append(order.getCustomerAddress());
+    }
+
+    private StringBuilder printHeader(StringBuilder receipt, String s) {
+        return receipt.append(s);
     }
 }
