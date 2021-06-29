@@ -20,7 +20,7 @@ public class OrderReceipt {
         String orderHeader = "======Printing Orders======\n";
         printHeader(receipt, orderHeader);
 
-        printCustomerInformation(receipt);
+        printCustomerInformation(receipt, order);
 
         double totalSalesTax = 0d;
         double totalAmount = 0d;
@@ -42,12 +42,12 @@ public class OrderReceipt {
         return receipt.toString();
     }
 
-    private StringBuilder printTotalAmount(StringBuilder receipt, double tot, String s) {
-        return receipt.append(s).append('\t').append(tot);
+    private StringBuilder printTotalAmount(StringBuilder receipt, double totalAmount, String totalAmountStr) {
+        return receipt.append(totalAmountStr).append('\t').append(totalAmount);
     }
 
-    private StringBuilder printStateTax(StringBuilder receipt, double totSalesTx, String s) {
-        return receipt.append(s).append('\t').append(totSalesTx);
+    private StringBuilder printStateTax(StringBuilder receipt, double totalSalesTax, String salesTax) {
+        return receipt.append(salesTax).append('\t').append(totalSalesTax);
     }
 
     private double calculateTotalAmount(LineItem lineItem, double salesTax) {
@@ -69,12 +69,12 @@ public class OrderReceipt {
         receipt.append('\n');
     }
 
-    private void printCustomerInformation(StringBuilder receipt) {
+    private void printCustomerInformation(StringBuilder receipt, Order order) {
         receipt.append(order.getCustomerName());
         receipt.append(order.getCustomerAddress());
     }
 
-    private StringBuilder printHeader(StringBuilder receipt, String s) {
-        return receipt.append(s);
+    private StringBuilder printHeader(StringBuilder receipt, String header) {
+        return receipt.append(header);
     }
 }
