@@ -27,21 +27,21 @@ public class OrderReceipt {
 
         printCustomerInformation(receipt);
 
-        double totSalesTx = 0d;
-        double tot = 0d;
+        double totalSalesTax = 0d;
+        double totalAmount = 0d;
         for (LineItem lineItem : order.getLineItems()) {
             printItems(receipt, lineItem);
 
             double rateOne = .10;
             double salesTax = calculateSalesTax(lineItem, rateOne);
-            totSalesTx += salesTax;
+            totalSalesTax += salesTax;
 
-            tot += calculateTotalAmount(lineItem, salesTax);
+            totalAmount += calculateTotalAmount(lineItem, salesTax);
         }
 
-        printStateTax(receipt, totSalesTx, "Sales Tax");
+        printStateTax(receipt, totalSalesTax, "Sales Tax");
 
-        printTotalAmount(receipt, tot, "Total Amount");
+        printTotalAmount(receipt, totalAmount, "Total Amount");
         return receipt.toString();
     }
 
