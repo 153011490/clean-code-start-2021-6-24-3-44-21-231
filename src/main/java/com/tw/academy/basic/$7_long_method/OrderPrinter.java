@@ -12,8 +12,13 @@ public class OrderPrinter {
         return header;
     }
 
-    public StringBuilder printHeader(){
+    public void printHeader(){
         receipt.append(this.header);
+    }
+
+    public StringBuilder printCustomerInformation(Order order) {
+        receipt.append(order.getCustomerName());
+        receipt.append(order.getCustomerAddress());
         return receipt;
     }
 }

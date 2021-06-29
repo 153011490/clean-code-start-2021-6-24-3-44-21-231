@@ -5,3 +5,4 @@
 5. rename totSalesTx to totalSalesTax, and tot to totalAmount
 6. remove useless method 
 7. introduce variable for sales tax,order header and total amount
+8. inline printCustomerInformation to OrderPrinter

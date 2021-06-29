@@ -19,9 +19,9 @@ public class OrderReceipt {
 
         String orderHeader = "======Printing Orders======\n";
         OrderPrinter orderPrinter = new OrderPrinter(orderHeader);
-        receipt = orderPrinter.printHeader();
+        orderPrinter.printHeader();
 
-        printCustomerInformation(receipt, order);
+        receipt = orderPrinter.printCustomerInformation(order);
 
         double totalSalesTax = 0d;
         double totalAmount = 0d;
@@ -70,12 +70,5 @@ public class OrderReceipt {
         receipt.append('\n');
     }
 
-    private void printCustomerInformation(StringBuilder receipt, Order order) {
-        receipt.append(order.getCustomerName());
-        receipt.append(order.getCustomerAddress());
-    }
 
-    private StringBuilder printHeader(StringBuilder receipt, OrderPrinter orderPrinter) {
-        return receipt.append(orderPrinter.getHeader());
-    }
 }
