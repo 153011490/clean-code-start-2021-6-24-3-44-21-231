@@ -15,10 +15,11 @@ public class OrderReceipt {
     }
 
     public String printReceipt() {
-        StringBuilder receipt = new StringBuilder();
+        StringBuilder receipt;
 
         String orderHeader = "======Printing Orders======\n";
-        printHeader(receipt, orderHeader);
+        OrderPrinter orderPrinter = new OrderPrinter(orderHeader);
+        receipt = orderPrinter.printHeader();
 
         printCustomerInformation(receipt, order);
 
@@ -74,7 +75,7 @@ public class OrderReceipt {
         receipt.append(order.getCustomerAddress());
     }
 
-    private StringBuilder printHeader(StringBuilder receipt, String header) {
-        return receipt.append(header);
+    private StringBuilder printHeader(StringBuilder receipt, OrderPrinter orderPrinter) {
+        return receipt.append(orderPrinter.getHeader());
     }
 }
