@@ -14,12 +14,6 @@ public class OrderReceipt {
         this.order = order;
     }
 
-    //Deprecated
-    public String printCustomerName() {
-        return order.getCustomerName();
-    }
-
-    //todo: rename -- Tom
     public String printReceipt() {
         StringBuilder receipt = new StringBuilder();
 

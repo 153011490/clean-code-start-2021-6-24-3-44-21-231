@@ -3,3 +3,4 @@
 3. extract method printHeader,printCustomerInformation and printItems
 4. extract method calculateSalesTax,calculateTotalAmount,printStateTax and printTotalAmount
 5. rename totSalesTx to totalSalesTax, and tot to totalAmount
+6. remove useless method 
